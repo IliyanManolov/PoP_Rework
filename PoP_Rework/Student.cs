@@ -19,19 +19,12 @@ namespace PoP_Rework
             }
             set{}
         }
-        public int[] Scores { get; set; }
+        public double[] Scores { get; set; }
         public double AverageScore { get; set; }
         public string FullAddress { get; set; }
-        //{
-        //    get
-        //    {
-        //        return Address.ExactAddress + " " + Address.Street + " " + Address.City + " " + Address.Country;
-        //    }
-        //    set { }
-        //}
-        public void DisplayScore()
+        public void DisplayScore(Student student)
         {
-            foreach (int score in Scores)
+            foreach (int score in student.Scores)
             {
                 Console.Write(score + ",");
             }
@@ -40,9 +33,9 @@ namespace PoP_Rework
         {
             return    "Student " + FullName + " age is " + Age
                     + "\nStudent " + FullName + " average score is " + AverageScore
-                    + "\nStudent " + FullName + " full address is " + FullAddress;
+                    + "\nStudent " + FullName + " full address is " + Address;
         }
-        public string SetFullAddres(Address newAddress)
+        public string SetFullAddress(Address newAddress)
         {
             return newAddress.ExactAddress + " " + newAddress.Street + " " + newAddress.City + " " + newAddress.Country;
         }
