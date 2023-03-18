@@ -16,5 +16,17 @@ namespace PoP_Rework
         {
             return ExactAddress + " " + Street + ", " + City + ", " + Country;
         }
+
+        public void AddAddress()
+        {
+            Console.WriteLine("Student house number: ");
+            ExactAddress = Console.ReadLine();
+            Console.WriteLine("Student street: ");
+            Street = Console.ReadLine();
+            Console.WriteLine("Student city: ");
+            City = Console.ReadLine();
+            Console.WriteLine("Student country: ");
+            Country = Console.ReadLine();
+        }
     }
 }

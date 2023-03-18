@@ -35,9 +35,46 @@ namespace PoP_Rework
                     + "\nStudent " + FullName + " average score is " + AverageScore
                     + "\nStudent " + FullName + " full address is " + Address;
         }
-        public string SetFullAddress(Address newAddress)
+        //public string SetFullAddress(Address newAddress)
+        //{
+        //    return newAddress.ExactAddress + " " + newAddress.Street + " " + newAddress.City + " " + newAddress.Country;
+        //}
+        public void AddStudentDetails()
         {
-            return newAddress.ExactAddress + " " + newAddress.Street + " " + newAddress.City + " " + newAddress.Country;
+            Console.WriteLine("Student First name: ");
+            FirstName = Console.ReadLine();
+            Console.WriteLine("Student Last name: ");
+            LastName = Console.ReadLine();
+            Console.WriteLine("Student Age: ");
+            Age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Student number: ");
+            StudentNumber = Console.ReadLine();
         }
+        public void AddStudentScore()
+        {
+            Console.WriteLine("Number of student scores: ");
+            int scoreNumber = int.Parse(Console.ReadLine());
+            Scores = new double[scoreNumber];
+            for (int i = 0; i < scoreNumber; i++)
+            {
+                Console.Write($"Score {i + 1}: ");
+                Scores[i] = int.Parse(Console.ReadLine());
+            }
+
+            double result = 0;
+            for (int i = 0; i < scoreNumber; i++)
+            {
+                result = result + Scores[i];
+            }
+
+            AverageScore = (result / scoreNumber);
+        }
+        public void SetAddress(Address newAddress)
+        {
+            Address = newAddress;
+            FullAddress = newAddress.ExactAddress + " " + newAddress.Street + ", " + newAddress.City + ", " + newAddress.Country;
+        }
+
+
     }
 }

@@ -11,19 +11,19 @@ namespace PoP_Rework
     {
         static void Main(string[] args)
         {
-            Address address = new Address();
-            address.ExactAddress = "testExactAddress";
-            address.Street = "testStreet";
-            address.City = "testCity";
-            address.Country = "testCountry";
+            //Address address = new Address();
+            //address.ExactAddress = "testExactAddress";
+            //address.Street = "testStreet";
+            //address.City = "testCity";
+            //address.Country = "testCountry";
 
-            Student student = new Student();
-            student.FirstName = "TestFirstName";
-            student.LastName = "TestLastName";
-            student.Address = address;
-            student.FullAddress = student.SetFullAddress(address);
-            Console.WriteLine("test for full address: " +student.FullAddress);
-            Console.WriteLine("test for address: " + student.Address);
+            //Student student = new Student();
+            //student.FirstName = "TestFirstName";
+            //student.LastName = "TestLastName";
+            //student.Address = address;
+            //student.FullAddress = student.SetFullAddress(address);
+            //Console.WriteLine("test for full address: " +student.FullAddress);
+            //Console.WriteLine("test for address: " + student.Address);
             ////student.FullAddress = "TEST ADDRESS";
             //student.StudentNumber = "TEST NUMBER";
             //int[] test = new int[] { 1, 2, 3 };
@@ -32,7 +32,7 @@ namespace PoP_Rework
             ////student.DisplayScore();
            // Console.WriteLine(student.ToString());
             //Console.ReadLine();
-            //Menu();
+            Menu();
         }
 
         static public void Menu()
@@ -51,11 +51,14 @@ namespace PoP_Rework
             switch (chosen)
             {
                 case 1:
-                    Console.WriteLine("1");
+                    Services.AddStudent();
                     break;
                 case 2:
+                    Services.FindStudent();
+                    Services.DisplayStudent();
                     break;
                 case 3:
+                    Services.DisplayAllStudents();
                     break;
                 default:
                     Console.Clear();
