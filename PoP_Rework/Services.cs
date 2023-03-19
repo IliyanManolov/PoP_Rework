@@ -27,9 +27,10 @@ namespace PoP_Rework
         }
         static public void FindStudent()
         {
-            Console.WriteLine("First name of the student: ");
+            Console.Clear();
+            Console.Write("First name of the student: ");
             string firstName = Console.ReadLine();
-            Console.WriteLine("Last name of the student: ");
+            Console.Write("Last name of the student: ");
             string lastName = Console.ReadLine();
             string fullName = firstName.Trim() + " " + lastName.Trim();
             DisplayStudent(fullName);
@@ -39,12 +40,16 @@ namespace PoP_Rework
             using (StreamReader reader = new StreamReader(FileName))
             {
                 var line = reader.ReadLine();
-                var temp = line.Split(';');
-                while (name != temp[0] + " " + temp[1])
+                while (line != null && name != line.Split(';')[0] + " " + line.Split(';')[1])
                 {
                     line = reader.ReadLine();
-                    temp = line.Split(';');
                 }
+                if (line == null)
+                {
+                    Console.WriteLine($"Student {name} not found");
+                    return;
+                }
+                var temp = line.Split(';');
                 Student student = new Student();
                 Address address = new Address();
                 student.FirstName = temp[0];
@@ -63,6 +68,8 @@ namespace PoP_Rework
         }
         static public void DisplayAllStudents()
         {
+            Console.Clear();
+            Console.WriteLine("Available students:");
             using (StreamReader reader = new StreamReader(FileName))
             {
                 var line = reader.ReadLine();
@@ -96,7 +103,7 @@ namespace PoP_Rework
             using (StreamWriter writer = new StreamWriter(fileName, true))
             {
                 writer.WriteLine(student.FirstName + ";" + student.LastName + ";" + student.StudentNumber + ";" + student.Age 
-                                + ";" + student.AverageScore
+                                + ";" + student.AverageScore 
                                 + ";" + address.ExactAddress + ";" + address.Street + ";" + address.City + ";" + address.Country);
             }
         }
