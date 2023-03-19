@@ -19,9 +19,16 @@ namespace PoP_Rework
             }
             set{}
         }
-        public double[] Scores { get; set; }
+        public int[] Scores { get; set; }
         public double AverageScore { get; set; }
-        public string FullAddress { get; set; }
+        public string FullAddress
+        {
+            get
+            {
+                return Address.ExactAddress + " " + Address.Street + ", " + Address.City + ", " + Address.Country;
+            }
+            set{}
+        }
         public void DisplayScore(Student student)
         {
             foreach (int score in student.Scores)
@@ -32,13 +39,11 @@ namespace PoP_Rework
         public override string ToString()
         {
             return    "Student " + FullName + " age is " + Age
+                    + "\nStudent " + FullName + " student number is " + StudentNumber
                     + "\nStudent " + FullName + " average score is " + AverageScore
+                    + "\nStudent " + FullName + " lives in " + Address.City + ", " + Address.Country 
                     + "\nStudent " + FullName + " full address is " + Address;
         }
-        //public string SetFullAddress(Address newAddress)
-        //{
-        //    return newAddress.ExactAddress + " " + newAddress.Street + " " + newAddress.City + " " + newAddress.Country;
-        //}
         public void AddStudentDetails()
         {
             Console.WriteLine("Student First name: ");
@@ -52,9 +57,9 @@ namespace PoP_Rework
         }
         public void AddStudentScore()
         {
-            Console.WriteLine("Number of student scores: ");
+            Console.Write("Number of student scores: ");
             int scoreNumber = int.Parse(Console.ReadLine());
-            Scores = new double[scoreNumber];
+            Scores = new int[scoreNumber];
             for (int i = 0; i < scoreNumber; i++)
             {
                 Console.Write($"Score {i + 1}: ");
@@ -67,12 +72,11 @@ namespace PoP_Rework
                 result = result + Scores[i];
             }
 
-            AverageScore = (result / scoreNumber);
+            AverageScore = (double) result / (double) scoreNumber;
         }
         public void SetAddress(Address newAddress)
         {
             Address = newAddress;
-            FullAddress = newAddress.ExactAddress + " " + newAddress.Street + ", " + newAddress.City + ", " + newAddress.Country;
         }
 
 

@@ -19,13 +19,13 @@ namespace PoP_Rework
 
         public void AddAddress()
         {
-            Console.WriteLine("Student house number: ");
+            Console.Write("Student house number: ");
             ExactAddress = Console.ReadLine();
-            Console.WriteLine("Student street: ");
+            Console.Write("Student street: ");
             Street = Console.ReadLine();
-            Console.WriteLine("Student city: ");
+            Console.Write("Student city: ");
             City = Console.ReadLine();
-            Console.WriteLine("Student country: ");
+            Console.Write("Student country: ");
             Country = Console.ReadLine();
         }
     }

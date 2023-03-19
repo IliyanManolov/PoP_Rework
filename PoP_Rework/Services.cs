@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace PoP_Rework
 {
     public class Services
     {
+        static public string FileName = "D:\\University\\Year1\\PrinciplesOfProgramming\\PoP_Rework\\PoP_Rework\\studentdata.txt";
         static public void AddStudent()
         {
             Student student = new Student();
@@ -21,6 +23,7 @@ namespace PoP_Rework
             Console.Clear();
             address.AddAddress();
             student.SetAddress(address);
+            SaveToFile(student, address, FileName);
         }
         static public void FindStudent()
         {
@@ -28,43 +31,74 @@ namespace PoP_Rework
             string firstName = Console.ReadLine();
             Console.WriteLine("Last name of the student: ");
             string lastName = Console.ReadLine();
-            string fullName = firstName + " " + lastName;
+            string fullName = firstName.Trim() + " " + lastName.Trim();
+            DisplayStudent(fullName);
         }
-        static public void DisplayStudent()
+        static public void DisplayStudent(string name)
         {
+            using (StreamReader reader = new StreamReader(FileName))
+            {
+                var line = reader.ReadLine();
+                var temp = line.Split(';');
+                while (name != temp[0] + " " + temp[1])
+                {
+                    line = reader.ReadLine();
+                    temp = line.Split(';');
+                }
+                Student student = new Student();
+                Address address = new Address();
+                student.FirstName = temp[0];
+                student.LastName = temp[1];
+                student.StudentNumber = temp[2];
+                student.Age = int.Parse(temp[3]);
+                student.AverageScore = double.Parse(temp[4]);
 
+                address.ExactAddress = temp[5];
+                address.Street = temp[6];
+                address.City = temp[7];
+                address.Country = temp[8];
+                student.SetAddress(address);
+                Console.WriteLine(student.ToString());
+            }
         }
         static public void DisplayAllStudents()
         {
+            using (StreamReader reader = new StreamReader(FileName))
+            {
+                var line = reader.ReadLine();
+                int counter = 1;
+                while (line != null)
+                {
+                    Student student = new Student();
+                    Address address = new Address();
+                    var temp = line.Split(';');
 
+                    student.FirstName = temp[0];
+                    student.LastName = temp[1];
+                    student.StudentNumber = temp[2];
+                    student.Age = int.Parse(temp[3]);
+                    student.AverageScore = double.Parse(temp[4]);
+                    
+                    address.ExactAddress = temp[5];
+                    address.Street = temp[6];
+                    address.City = temp[7];
+                    address.Country = temp[8];
+
+                    student.SetAddress(address);
+                    Console.WriteLine($"{counter}. " + student.FullName + " student number " + student.StudentNumber);
+                    line = reader.ReadLine();
+                    counter++;
+                }
+            }
         }
         static public void SaveToFile(Student student, Address address, string fileName)
         {
             using (StreamWriter writer = new StreamWriter(fileName, true))
             {
                 writer.WriteLine(student.FirstName + ";" + student.LastName + ";" + student.StudentNumber + ";" + student.Age 
-                                + ";" + student.Scores + ";" + student.AverageScore
+                                + ";" + student.AverageScore
                                 + ";" + address.ExactAddress + ";" + address.Street + ";" + address.City + ";" + address.Country);
             }
         }
-        //static public void AddStudentScore(Student student)
-        //{
-        //    Console.WriteLine("Number of student scores: ");
-        //    int scoreNumber = int.Parse(Console.ReadLine());
-        //    student.Scores = new double[scoreNumber];
-        //    for (int i = 0; i < scoreNumber; i++)
-        //    {
-        //        Console.Write($"Score {i+1}: ");
-        //        student.Scores[i] = int.Parse(Console.ReadLine());
-        //    }
-
-        //    double result = 0;
-        //    for (int i = 0; i < scoreNumber;i++)
-        //    {
-        //        result = result + student.Scores[i];
-        //    }
-
-        //    student.AverageScore = (result / scoreNumber);
-        //}
     }
 }
