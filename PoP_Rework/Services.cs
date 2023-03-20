@@ -104,8 +104,24 @@ namespace PoP_Rework
             {
                 writer.WriteLine(student.FirstName + ";" + student.LastName + ";" + student.StudentNumber + ";" + student.Age 
                                 + ";" + student.AverageScore 
-                                + ";" + address.ExactAddress + ";" + address.Street + ";" + address.City + ";" + address.Country);
+                                + ";" + address.ExactAddress + ";" + address.Street + ";" + address.City + ";" + address.Country + ";" + WriteScore(student));
+                //foreach(int score in student.Scores)
+                //{
+                //    writer.Write(score +",");
+                //}
             }
+        }
+        static public string WriteScore(Student student)
+        {
+            string[] result = new string[student.Scores.Length];
+            int counter = 0;
+            foreach (int score in student.Scores)
+            {
+                result[counter] = student.Scores[counter].ToString();
+                counter++;
+            }
+            string finalresult = string.Join(",", result);
+            return finalresult;
         }
     }
 }
