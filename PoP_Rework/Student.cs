@@ -78,7 +78,5 @@ namespace PoP_Rework
         {
             Address = newAddress;
         }
-
-
     }
 }
