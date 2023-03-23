@@ -48,13 +48,17 @@ namespace PoP_Rework
         public void AddStudentDetails()
         {
             Console.WriteLine("Student First name: ");
-            FirstName = Console.ReadLine();
+            FirstName = Services.ValidateIfEmpty(Console.ReadLine());
+
             Console.WriteLine("Student Last name: ");
-            LastName = Console.ReadLine();
+            LastName = Services.ValidateIfEmpty(Console.ReadLine());
+
             Console.WriteLine("Student Age: ");
             Age = int.Parse(Console.ReadLine());
+
             Console.WriteLine("Student number: ");
-            StudentNumber = Console.ReadLine();
+            StudentNumber = Services.ValidateIfEmpty(Console.ReadLine());
+
         }
         public void AddStudentScore()
         {

@@ -110,13 +110,17 @@ namespace PoP_Rework
                                 + student.ScoreToFile());
             }
         }
-        static public void ValidateIfEmpty(string str)
+        static public string ValidateIfEmpty(string str)
         {
             while (string.IsNullOrEmpty(str.Trim()))
             {
                 Console.WriteLine("Input cannot be empty! Enter a new one");
                 str = Console.ReadLine();
+                //if(string.IsNullOrEmpty(str.Trim()) == true)
+                //    ValidateIfEmpty(str);
+                //return str;
             }
+            return str;
         }
     }
 }

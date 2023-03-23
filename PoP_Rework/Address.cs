@@ -20,13 +20,16 @@ namespace PoP_Rework
         public void AddAddress()
         {
             Console.Write("Student house number: ");
-            ExactAddress = Console.ReadLine();
+            ExactAddress = Services.ValidateIfEmpty(Console.ReadLine());
+            
             Console.Write("Student street: ");
-            Street = Console.ReadLine();
+            Street = Services.ValidateIfEmpty(Console.ReadLine());
+
             Console.Write("Student city: ");
-            City = Console.ReadLine();
+            City = Services.ValidateIfEmpty(Console.ReadLine());
+
             Console.Write("Student country: ");
-            Country = Console.ReadLine();
+            Country = Services.ValidateIfEmpty(Console.ReadLine());
         }
     }
 }
