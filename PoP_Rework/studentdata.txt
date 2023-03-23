@@ -1,5 +1,1 @@
-TestFirstName;TestLastName;11;1;3;5;TestStreet;TestCity;TestCountry
-John;Smith;5;15;5,5;7;Roza street;Varna;Bulgaria
-Ivan;Ivanov;6;17;4;3;London street;London;United Kingdom
-Petar;Petrov;21;17;8;30;Beli lilii street;Varna;Bulgaria
-test;testln;1;1;13;0;teststreet;testc;testcc;11,12,13,14,15
+Ivan;Ivanov;1;15;11;5;Roza street;Varna;Bulgaria;10,11,12

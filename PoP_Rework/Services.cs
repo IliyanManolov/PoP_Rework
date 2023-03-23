@@ -57,6 +57,7 @@ namespace PoP_Rework
                 student.StudentNumber = temp[2];
                 student.Age = int.Parse(temp[3]);
                 student.AverageScore = double.Parse(temp[4]);
+                student.ScoreFromFile(temp[9]);
 
                 address.ExactAddress = temp[5];
                 address.Street = temp[6];
@@ -85,6 +86,7 @@ namespace PoP_Rework
                     student.StudentNumber = temp[2];
                     student.Age = int.Parse(temp[3]);
                     student.AverageScore = double.Parse(temp[4]);
+                    student.ScoreFromFile(temp[9]);
                     
                     address.ExactAddress = temp[5];
                     address.Street = temp[6];
@@ -106,10 +108,6 @@ namespace PoP_Rework
                                 + ";" + student.AverageScore 
                                 + ";" + address.ExactAddress + ";" + address.Street + ";" + address.City + ";" + address.Country + ";"
                                 + student.ScoreToFile());
-                //foreach(int score in student.Scores)
-                //{
-                //    writer.Write(score +",");
-                //}
             }
         }
     }

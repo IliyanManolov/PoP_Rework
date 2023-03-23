@@ -42,7 +42,8 @@ namespace PoP_Rework
                     + "\nStudent " + FullName + " student number is " + StudentNumber
                     + "\nStudent " + FullName + " average score is " + AverageScore
                     + "\nStudent " + FullName + " lives in " + Address.City + ", " + Address.Country 
-                    + "\nStudent " + FullName + " full address is " + Address;
+                    + "\nStudent " + FullName + " full address is " + Address
+                    + "\nStudent " + FullName + $" has {Scores.Length} scores";
         }
         public void AddStudentDetails()
         {
@@ -77,6 +78,29 @@ namespace PoP_Rework
         public void SetAddress(Address newAddress)
         {
             Address = newAddress;
+        }
+
+        public string ScoreToFile()
+        {
+            string[] result = new string[Scores.Length];
+            int counter = 0;
+            foreach (int score in Scores)
+            {
+                result[counter] = Scores[counter].ToString();
+                counter++;
+            }
+            string finalresult = string.Join(",", result);
+            return finalresult;
+        }
+        public void ScoreFromFile(string input)
+        {
+            Scores = new int[input.Split(',').Length];
+            int i = 0;
+            foreach (string number in input.Split(','))
+            {
+                Scores[i] = int.Parse(number);
+                i++;
+            }
         }
     }
 }
