@@ -47,28 +47,28 @@ namespace PoP_Rework
         }
         public void AddStudentDetails()
         {
-            Console.WriteLine("Student First name: ");
-            FirstName = Services.ValidateIfEmpty(Console.ReadLine());
+            Console.Write("Student First name: ");
+            FirstName = Services.ValidateString(Console.ReadLine());
 
-            Console.WriteLine("Student Last name: ");
-            LastName = Services.ValidateIfEmpty(Console.ReadLine());
+            Console.Write("Student Last name: ");
+            LastName = Services.ValidateString(Console.ReadLine());
 
-            Console.WriteLine("Student Age: ");
-            Age = int.Parse(Console.ReadLine());
+            Console.Write("Student Age: ");
+            Age = Services.ValidateInt(Console.ReadLine());
 
-            Console.WriteLine("Student number: ");
-            StudentNumber = Services.ValidateIfEmpty(Console.ReadLine());
+            Console.Write("Student number: ");
+            StudentNumber = Services.ValidateString(Console.ReadLine());
 
         }
         public void AddStudentScore()
         {
             Console.Write("Number of student scores: ");
-            int scoreNumber = int.Parse(Console.ReadLine());
+            int scoreNumber = Services.ValidateInt(Console.ReadLine());
             Scores = new int[scoreNumber];
             for (int i = 0; i < scoreNumber; i++)
             {
                 Console.Write($"Score {i + 1}: ");
-                Scores[i] = int.Parse(Console.ReadLine());
+                Scores[i] = ValidateScore(Console.ReadLine());
             }
 
             double result = 0;
@@ -105,6 +105,23 @@ namespace PoP_Rework
                 Scores[i] = int.Parse(number);
                 i++;
             }
+        }
+        public int ValidateScore(string score) 
+        {
+            while (string.IsNullOrEmpty(score) == true || int.Parse(score) < 0)
+            {
+                if(string.IsNullOrEmpty(score) == true)
+                {
+                    Console.Write("Input data cannot be empty! Input new data: ");
+                    score = Console.ReadLine();
+                }
+                else if(int.Parse(score) < 0)
+                {
+                    Console.Write("Input data cannot be negative! Input new data: ");
+                    score = Console.ReadLine();
+                }
+            }
+            return int.Parse(score);
         }
     }
 }

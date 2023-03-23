@@ -31,12 +31,17 @@ namespace PoP_Rework
             {
                 case 1:
                     Services.AddStudent();
+                    Menu();
                     break;
                 case 2:
                     Services.FindStudent();
+                    Console.WriteLine();
+                    Menu();
                     break;
                 case 3:
                     Services.DisplayAllStudents();
+                    Console.WriteLine();
+                    Menu();
                     break;
                 default:
                     Console.Clear();

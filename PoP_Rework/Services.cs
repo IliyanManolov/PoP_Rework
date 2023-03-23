@@ -28,11 +28,15 @@ namespace PoP_Rework
         static public void FindStudent()
         {
             Console.Clear();
+
             Console.Write("First name of the student: ");
-            string firstName = Console.ReadLine();
+            string firstName = Services.ValidateString(Console.ReadLine());
             Console.Write("Last name of the student: ");
-            string lastName = Console.ReadLine();
+            string lastName = Services.ValidateString(Console.ReadLine());
+
             string fullName = firstName.Trim() + " " + lastName.Trim();
+
+            Console.Clear();
             DisplayStudent(fullName);
         }
         static public void DisplayStudent(string name)
@@ -110,17 +114,31 @@ namespace PoP_Rework
                                 + student.ScoreToFile());
             }
         }
-        static public string ValidateIfEmpty(string str)
+        static public string ValidateString(string str)
         {
             while (string.IsNullOrEmpty(str.Trim()))
             {
-                Console.WriteLine("Input cannot be empty! Enter a new one");
+                Console.Write("Input data cannot be empty! Enter new data: ");
                 str = Console.ReadLine();
-                //if(string.IsNullOrEmpty(str.Trim()) == true)
-                //    ValidateIfEmpty(str);
-                //return str;
             }
             return str;
+        }
+        static public int ValidateInt(string val)
+        {
+            while (string.IsNullOrEmpty(val.Trim()) || int.Parse(val) <= 0)
+            {
+                if (string.IsNullOrEmpty(val.Trim()) == true)
+                {
+                    Console.Write("Input data cannot be empty! Enter new data: ");
+                    val = Console.ReadLine();
+                }
+                else if (int.Parse(val) <= 0)
+                {
+                    Console.Write("Input data cannot be negative or a 0! Enter new data: ");
+                    val = Console.ReadLine();
+                }
+            }
+            return int.Parse(val);
         }
     }
 }
