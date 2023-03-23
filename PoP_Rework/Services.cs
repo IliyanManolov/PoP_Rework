@@ -44,7 +44,7 @@ namespace PoP_Rework
             using (StreamReader reader = new StreamReader(FileName))
             {
                 var line = reader.ReadLine();
-                while (line != null && name != line.Split(';')[0] + " " + line.Split(';')[1])
+                while (line != null && name.ToLower() != line.Split(';')[0].ToLower() + " " + line.Split(';')[1].ToLower())
                 {
                     line = reader.ReadLine();
                 }
@@ -87,7 +87,7 @@ namespace PoP_Rework
 
                     student.FirstName = temp[0];
                     student.LastName = temp[1];
-                    student.StudentNumber = temp[2];
+                    student.StudentNumber = temp[2];        //if we only need to show name everything below this can be removed
                     student.Age = int.Parse(temp[3]);
                     student.AverageScore = double.Parse(temp[4]);
                     student.ScoreFromFile(temp[9]);
