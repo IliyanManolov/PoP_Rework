@@ -10,7 +10,7 @@ namespace PoP_Rework
     {
         public string StudentNumber { get; set; }
         public int Age { get; set; }
-        public Address Address { get; set; } //can't assign Address.ExactAddress, etc. so just gonna use a different object and set it
+        public Address Address { get; set; }
         public string FullName
         {
             get
@@ -29,21 +29,26 @@ namespace PoP_Rework
             }
             set{}
         }
-        public void DisplayScore(Student student)
-        {
-            foreach (int score in student.Scores)
-            {
-                Console.Write(score + ",");
-            }
-        }
+
         public override string ToString()
         {
-            return    "Student " + FullName + " age is " + Age
+            return "Student " + FullName + " age is " + Age
                     + "\nStudent " + FullName + " student number is " + StudentNumber
                     + "\nStudent " + FullName + " average score is " + AverageScore
-                    + "\nStudent " + FullName + " lives in " + Address.City + ", " + Address.Country 
+                    + "\nStudent " + FullName + " lives in " + Address.City + ", " + Address.Country
                     + "\nStudent " + FullName + " full address is " + Address
                     + "\nStudent " + FullName + $" has {Scores.Length} scores";
+        }        
+        public string DisplayScore(Student student)
+        {
+            string result = string.Empty;
+
+            result = student.Scores[0].ToString();
+            for (int i = 1; i < student.Scores.Length; i++)
+            {
+                result = result + "," + student.Scores[i];
+            }
+            return result;
         }
         public void AddStudentDetails()
         {
@@ -83,7 +88,6 @@ namespace PoP_Rework
         {
             Address = newAddress;
         }
-
         public string ScoreToFile()
         {
             string[] result = new string[Scores.Length];

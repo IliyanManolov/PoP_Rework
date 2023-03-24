@@ -34,7 +34,7 @@ namespace PoP_Rework
             Console.Write("Last name of the student: ");
             string lastName = Services.ValidateString(Console.ReadLine());
 
-            string fullName = firstName.Trim() + " " + lastName.Trim();
+            string fullName = firstName.Trim().Replace(" ", string.Empty) + " " + lastName.Trim().Replace(" ", string.Empty);
 
             Console.Clear();
             DisplayStudent(fullName);
@@ -69,6 +69,7 @@ namespace PoP_Rework
                 address.Country = temp[8];
                 student.SetAddress(address);
                 Console.WriteLine(student.ToString());
+                Console.WriteLine($"Student {student.FullName} scores are: {student.DisplayScore(student)}");
             }
         }
         static public void DisplayAllStudents()
@@ -121,7 +122,7 @@ namespace PoP_Rework
                 Console.Write("Input data cannot be empty! Enter new data: ");
                 str = Console.ReadLine();
             }
-            return str;
+            return str.Trim();
         }
         static public int ValidateInt(string val)
         {
