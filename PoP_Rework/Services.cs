@@ -53,9 +53,11 @@ namespace PoP_Rework
                     Console.WriteLine($"Student {name} not found");
                     return;
                 }
+
                 var temp = line.Split(';');
                 Student student = new Student();
                 Address address = new Address();
+
                 student.FirstName = temp[0];
                 student.LastName = temp[1];
                 student.StudentNumber = temp[2];
@@ -98,7 +100,7 @@ namespace PoP_Rework
                     address.City = temp[7];
                     address.Country = temp[8];
 
-                    student.SetAddress(address);
+                    student.SetAddress(address);  //end
                     Console.WriteLine($"{counter}. " + student.FullName + " student number " + student.StudentNumber);
                     line = reader.ReadLine();
                     counter++;

@@ -21,7 +21,7 @@ namespace PoP_Rework
             Console.WriteLine("2. Display information about a student");
             Console.WriteLine("3. Display information about all students");
             Console.Write("Option selected: ");
-            int option = int.Parse(Console.ReadLine());
+            int option = Services.ValidateInt(Console.ReadLine());
             Options(option);
 
         }
