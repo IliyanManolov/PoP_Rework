@@ -112,9 +112,9 @@ namespace PoP_Rework
         }
         public int ValidateScore(string score) 
         {
-            while (string.IsNullOrEmpty(score) == true || int.Parse(score) < 0)
+            while (string.IsNullOrWhiteSpace(score) == true || int.Parse(score) < 0)
             {
-                if(string.IsNullOrEmpty(score) == true)
+                if(string.IsNullOrWhiteSpace(score) == true)
                 {
                     Console.Write("Input data cannot be empty! Input new data: ");
                     score = Console.ReadLine();
@@ -125,7 +125,7 @@ namespace PoP_Rework
                     score = Console.ReadLine();
                 }
             }
-            return int.Parse(score);
+            return int.Parse(score.Trim());
         }
     }
 }

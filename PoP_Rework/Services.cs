@@ -119,7 +119,7 @@ namespace PoP_Rework
         }
         static public string ValidateString(string str)
         {
-            while (string.IsNullOrEmpty(str.Trim()))
+            while (string.IsNullOrWhiteSpace(str))
             {
                 Console.Write("Input data cannot be empty! Enter new data: ");
                 str = Console.ReadLine();
@@ -128,20 +128,20 @@ namespace PoP_Rework
         }
         static public int ValidateInt(string val)
         {
-            while (string.IsNullOrEmpty(val.Trim()) || int.Parse(val) <= 0)
+            while (string.IsNullOrWhiteSpace(val.Trim()) || int.Parse(val) <= 0)
             {
-                if (string.IsNullOrEmpty(val.Trim()) == true)
+                if (string.IsNullOrWhiteSpace(val) == true)
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
                     val = Console.ReadLine();
                 }
-                else if (int.Parse(val) <= 0)
+                else if (int.Parse(val.Trim()) <= 0)
                 {
                     Console.Write("Input data cannot be negative or a 0! Enter new data: ");
                     val = Console.ReadLine();
                 }
             }
-            return int.Parse(val);
+            return int.Parse(val.Trim());
         }
     }
 }
