@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ namespace PoP_Rework
             set{}
         }
 
+        static public List<Student> studentlist = new List<Student>();
         public override string ToString()
         {
             return "Student " + FullName + " age is " + Age
@@ -126,6 +128,57 @@ namespace PoP_Rework
                 }
             }
             return int.Parse(score.Trim());
+        }
+        public void AddToList(Student newstudent)
+        {
+            studentlist.Add(newstudent);
+        }
+        static public void AddFromFile()
+        {
+            using (StreamReader reader = new StreamReader(Services.FileName))
+            {
+                var line = reader.ReadLine();
+                while (line != null)
+                {
+                    Student student = new Student();
+                    Address address = new Address();
+                    var temp = line.Split(';');
+
+                    student.FirstName = temp[0];
+                    student.LastName = temp[1];
+                    student.StudentNumber = temp[2];
+                    student.Age = int.Parse(temp[3]);
+                    student.AverageScore = double.Parse(temp[4]);
+                    student.ScoreFromFile(temp[9]);
+
+                    address.ExactAddress = temp[5];
+                    address.Street = temp[6];
+                    address.City = temp[7];
+                    address.Country = temp[8];
+
+                    student.SetAddress(address);
+                    studentlist.Add(student);
+                    line = reader.ReadLine();
+                }
+            }
+
+        }
+        public string DisplayScore()
+        {
+            string result = string.Empty;
+            result = Scores[0].ToString();
+            if (Scores.Length == 1)
+            {
+                return result;
+            }
+            else
+            {
+                for (int i = 1; i < Scores.Length; i++)
+                {
+                    result += ", " + Scores[i].ToString();
+                }
+            }
+            return result;
         }
     }
 }

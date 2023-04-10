@@ -24,6 +24,7 @@ namespace PoP_Rework
             address.AddAddress();
             student.SetAddress(address);
             SaveToFile(student, address, FileName);
+            student.AddToList(student);
         }
         static public void FindStudent()
         {
@@ -41,70 +42,56 @@ namespace PoP_Rework
         }
         static public void DisplayStudent(string name)
         {
-            using (StreamReader reader = new StreamReader(FileName))
+            for (int i = 0; i < Student.studentlist.Count; i++)
             {
-                var line = reader.ReadLine();
-                while (line != null && name.ToLower() != line.Split(';')[0].ToLower() + " " + line.Split(';')[1].ToLower())
+                if (Student.studentlist[i].FullName.ToLower() == name.ToLower())
                 {
-                    line = reader.ReadLine();
+                    Console.WriteLine(Student.studentlist[i].ToString());
+                    Console.WriteLine(Student.studentlist[i].Sc);
                 }
-                if (line == null)
-                {
-                    Console.WriteLine($"Student {name} not found");
-                    return;
-                }
-
-                var temp = line.Split(';');
-                Student student = new Student();
-                Address address = new Address();
-
-                student.FirstName = temp[0];
-                student.LastName = temp[1];
-                student.StudentNumber = temp[2];
-                student.Age = int.Parse(temp[3]);
-                student.AverageScore = double.Parse(temp[4]);
-                student.ScoreFromFile(temp[9]);
-
-                address.ExactAddress = temp[5];
-                address.Street = temp[6];
-                address.City = temp[7];
-                address.Country = temp[8];
-                student.SetAddress(address);
-                Console.WriteLine(student.ToString());
-                Console.WriteLine($"Student {student.FullName} scores are: {student.DisplayScore(student)}");
             }
+            //using (StreamReader reader = new StreamReader(FileName))
+            //{
+            //    var line = reader.ReadLine();
+            //    while (line != null && name.ToLower() != line.Split(';')[0].ToLower() + " " + line.Split(';')[1].ToLower())
+            //    {
+            //        line = reader.ReadLine();
+            //    }
+            //    if (line == null)
+            //    {
+            //        Console.WriteLine($"Student {name} not found");
+            //        return;
+            //    }
+
+            //    var temp = line.Split(';');
+            //    Student student = new Student();
+            //    Address address = new Address();
+
+            //    student.FirstName = temp[0];
+            //    student.LastName = temp[1];
+            //    student.StudentNumber = temp[2];
+            //    student.Age = int.Parse(temp[3]);
+            //    student.AverageScore = double.Parse(temp[4]);
+            //    student.ScoreFromFile(temp[9]);
+
+            //    address.ExactAddress = temp[5];
+            //    address.Street = temp[6];
+            //    address.City = temp[7];
+            //    address.Country = temp[8];
+            //    student.SetAddress(address);
+            //    Console.WriteLine(student.ToString());
+            //    Console.WriteLine($"Student {student.FullName} scores are: {student.DisplayScore(student)}");
+            //}
         }
         static public void DisplayAllStudents()
         {
             Console.Clear();
             Console.WriteLine("Available students:");
-            using (StreamReader reader = new StreamReader(FileName))
+            int counter = 1;
+            foreach (Student student in Student.studentlist)
             {
-                var line = reader.ReadLine();
-                int counter = 1;
-                while (line != null)
-                {
-                    Student student = new Student();
-                    Address address = new Address();
-                    var temp = line.Split(';');
-
-                    student.FirstName = temp[0];
-                    student.LastName = temp[1];
-                    student.StudentNumber = temp[2];        //if we only need to show name everything below this can be removed
-                    student.Age = int.Parse(temp[3]);
-                    student.AverageScore = double.Parse(temp[4]);
-                    student.ScoreFromFile(temp[9]);
-                    
-                    address.ExactAddress = temp[5];
-                    address.Street = temp[6];
-                    address.City = temp[7];
-                    address.Country = temp[8];
-
-                    student.SetAddress(address);  //end
-                    Console.WriteLine($"{counter}. " + student.FullName + " student number " + student.StudentNumber);
-                    line = reader.ReadLine();
-                    counter++;
-                }
+                Console.WriteLine($"{counter}. " + student.FullName + " student number " + student.StudentNumber);
+                counter++;
             }
         }
         static public void SaveToFile(Student student, Address address, string fileName)
