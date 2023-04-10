@@ -83,11 +83,16 @@ namespace PoP_Rework
         }
         static public int ValidateInt(string val)
         {
-            while (string.IsNullOrWhiteSpace(val.Trim()) || int.Parse(val) <= 0)
+            while (string.IsNullOrWhiteSpace(val.Trim()) || int.TryParse(val, out _) == false || int.Parse(val) <= 0)
             {
                 if (string.IsNullOrWhiteSpace(val) == true)
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
+                    val = Console.ReadLine();
+                }
+                if (int.TryParse(val, out _) == false)
+                {
+                    Console.Write("Input data must be a number! Input new data: ");
                     val = Console.ReadLine();
                 }
                 else if (int.Parse(val.Trim()) <= 0)
@@ -97,6 +102,26 @@ namespace PoP_Rework
                 }
             }
             return int.Parse(val.Trim());
+        }
+
+        static public bool ContainsOnlyLetters(string input)
+        {
+            foreach (char c in input)
+            {
+                if (Char.IsLetter(c) == false)
+                    return false;
+            }
+            return true;
+        }
+
+        static public bool ContainsOnlyDigits(string input)
+        {
+            foreach (char c in input)
+            {
+                if (Char.IsDigit(c) == false) 
+                    return false;
+            }
+            return true;
         }
     }
 }
