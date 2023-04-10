@@ -47,41 +47,9 @@ namespace PoP_Rework
                 if (Student.studentlist[i].FullName.ToLower() == name.ToLower())
                 {
                     Console.WriteLine(Student.studentlist[i].ToString());
-                    Console.WriteLine(Student.studentlist[i].Sc);
+                    Console.WriteLine($"Student {Student.studentlist[i].FullName}'s scores are: " + Student.studentlist[i].DisplayScore());
                 }
             }
-            //using (StreamReader reader = new StreamReader(FileName))
-            //{
-            //    var line = reader.ReadLine();
-            //    while (line != null && name.ToLower() != line.Split(';')[0].ToLower() + " " + line.Split(';')[1].ToLower())
-            //    {
-            //        line = reader.ReadLine();
-            //    }
-            //    if (line == null)
-            //    {
-            //        Console.WriteLine($"Student {name} not found");
-            //        return;
-            //    }
-
-            //    var temp = line.Split(';');
-            //    Student student = new Student();
-            //    Address address = new Address();
-
-            //    student.FirstName = temp[0];
-            //    student.LastName = temp[1];
-            //    student.StudentNumber = temp[2];
-            //    student.Age = int.Parse(temp[3]);
-            //    student.AverageScore = double.Parse(temp[4]);
-            //    student.ScoreFromFile(temp[9]);
-
-            //    address.ExactAddress = temp[5];
-            //    address.Street = temp[6];
-            //    address.City = temp[7];
-            //    address.Country = temp[8];
-            //    student.SetAddress(address);
-            //    Console.WriteLine(student.ToString());
-            //    Console.WriteLine($"Student {student.FullName} scores are: {student.DisplayScore(student)}");
-            //}
         }
         static public void DisplayAllStudents()
         {

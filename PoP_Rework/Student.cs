@@ -114,6 +114,7 @@ namespace PoP_Rework
         }
         public int ValidateScore(string score) 
         {
+            //TODO: add TryParse to avoid exceptions
             while (string.IsNullOrWhiteSpace(score) == true || int.Parse(score) < 0)
             {
                 if(string.IsNullOrWhiteSpace(score) == true)
