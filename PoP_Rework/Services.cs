@@ -74,23 +74,31 @@ namespace PoP_Rework
         }
         static public string ValidateString(string str)
         {
-            while (string.IsNullOrWhiteSpace(str))
+            while (string.IsNullOrWhiteSpace(str) || Validations.ContainsOnlyLetters(str) == false)
             {
-                Console.Write("Input data cannot be empty! Enter new data: ");
-                str = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(str)) 
+                { 
+                    Console.Write("Input data cannot be empty! Enter new data: ");
+                    str = Console.ReadLine();
+                }
+                if (Validations.ContainsOnlyLetters(str) == false)
+                {
+                    Console.Write("Input data cannot contain digits! Enter new data: ");
+                    str = Console.ReadLine();
+                }
             }
             return str.Trim();
         }
         static public int ValidateInt(string val)
         {
-            while (string.IsNullOrWhiteSpace(val.Trim()) || int.TryParse(val, out _) == false || int.Parse(val) <= 0)
+            while (string.IsNullOrWhiteSpace(val.Trim()) || Validations.ContainsOnlyDigits(val) == false || int.Parse(val) <= 0)
             {
                 if (string.IsNullOrWhiteSpace(val) == true)
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
                     val = Console.ReadLine();
                 }
-                if (int.TryParse(val, out _) == false)
+                if (Validations.ContainsOnlyDigits(val) == false)
                 {
                     Console.Write("Input data must be a number! Input new data: ");
                     val = Console.ReadLine();
@@ -104,24 +112,5 @@ namespace PoP_Rework
             return int.Parse(val.Trim());
         }
 
-        static public bool ContainsOnlyLetters(string input)
-        {
-            foreach (char c in input)
-            {
-                if (Char.IsLetter(c) == false)
-                    return false;
-            }
-            return true;
-        }
-
-        static public bool ContainsOnlyDigits(string input)
-        {
-            foreach (char c in input)
-            {
-                if (Char.IsDigit(c) == false) 
-                    return false;
-            }
-            return true;
-        }
     }
 }

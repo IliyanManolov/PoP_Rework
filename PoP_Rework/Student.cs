@@ -115,14 +115,14 @@ namespace PoP_Rework
         public int ValidateScore(string score) 
         {
             //TODO: add TryParse to avoid exceptions
-            while (string.IsNullOrWhiteSpace(score) == true || int.TryParse(score, out _) == false ||int.Parse(score) < 0)
+            while (string.IsNullOrWhiteSpace(score) == true || Validations.ContainsOnlyDigits(score) == false ||int.Parse(score) < 0)
             {
                 if(string.IsNullOrWhiteSpace(score) == true)
                 {
                     Console.Write("Input data cannot be empty! Input new data: ");
                     score = Console.ReadLine();
                 }
-                if (int.TryParse(score, out _) == false)
+                if (Validations.ContainsOnlyDigits(score) == false)
                 {
                     Console.Write("Input data must be a number! Input new data: ");
                     score = Console.ReadLine();
