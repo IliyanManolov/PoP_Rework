@@ -31,9 +31,9 @@ namespace PoP_Rework
             Console.Clear();
 
             Console.Write("First name of the student: ");
-            string firstName = Services.ValidateString(Console.ReadLine());
+            string firstName = Validations.ValidateString(Console.ReadLine());
             Console.Write("Last name of the student: ");
-            string lastName = Services.ValidateString(Console.ReadLine());
+            string lastName = Validations.ValidateString(Console.ReadLine());
 
             string fullName = firstName.Trim().Replace(" ", string.Empty) + " " + lastName.Trim().Replace(" ", string.Empty);
 
@@ -72,45 +72,45 @@ namespace PoP_Rework
                                 + student.ScoreToFile());
             }
         }
-        static public string ValidateString(string str)
-        {
-            while (string.IsNullOrWhiteSpace(str) || Validations.ContainsOnlyLetters(str) == false)
-            {
-                if (string.IsNullOrWhiteSpace(str)) 
-                { 
-                    Console.Write("Input data cannot be empty! Enter new data: ");
-                    str = Console.ReadLine();
-                }
-                if (Validations.ContainsOnlyLetters(str) == false)
-                {
-                    Console.Write("Input data cannot contain digits! Enter new data: ");
-                    str = Console.ReadLine();
-                }
-            }
-            return str.Trim();
-        }
-        static public int ValidateInt(string val)
-        {
-            while (string.IsNullOrWhiteSpace(val.Trim()) || Validations.ContainsOnlyDigits(val) == false || int.Parse(val) <= 0)
-            {
-                if (string.IsNullOrWhiteSpace(val) == true)
-                {
-                    Console.Write("Input data cannot be empty! Enter new data: ");
-                    val = Console.ReadLine();
-                }
-                if (Validations.ContainsOnlyDigits(val) == false)
-                {
-                    Console.Write("Input data must be a number! Input new data: ");
-                    val = Console.ReadLine();
-                }
-                else if (int.Parse(val.Trim()) <= 0)
-                {
-                    Console.Write("Input data cannot be negative or a 0! Enter new data: ");
-                    val = Console.ReadLine();
-                }
-            }
-            return int.Parse(val.Trim());
-        }
+        //static public string ValidateString(string str)
+        //{
+        //    while (string.IsNullOrWhiteSpace(str) || Validations.ContainsOnlyLetters(str) == false)
+        //    {
+        //        if (string.IsNullOrWhiteSpace(str)) 
+        //        { 
+        //            Console.Write("Input data cannot be empty! Enter new data: ");
+        //            str = Console.ReadLine();
+        //        }
+        //        if (Validations.ContainsOnlyLetters(str) == false)
+        //        {
+        //            Console.Write("Input data cannot contain digits! Enter new data: ");
+        //            str = Console.ReadLine();
+        //        }
+        //    }
+        //    return str.Trim();
+        //}
+        //static public int ValidateInt(string val)
+        //{
+        //    while (string.IsNullOrWhiteSpace(val.Trim()) || Validations.ContainsOnlyDigits(val) == false || int.Parse(val) <= 0)
+        //    {
+        //        if (string.IsNullOrWhiteSpace(val) == true)
+        //        {
+        //            Console.Write("Input data cannot be empty! Enter new data: ");
+        //            val = Console.ReadLine();
+        //        }
+        //        if (Validations.ContainsOnlyDigits(val) == false)
+        //        {
+        //            Console.Write("Input data must be a number! Input new data: ");
+        //            val = Console.ReadLine();
+        //        }
+        //        else if (int.Parse(val.Trim()) <= 0)
+        //        {
+        //            Console.Write("Input data cannot be negative or a 0! Enter new data: ");
+        //            val = Console.ReadLine();
+        //        }
+        //    }
+        //    return int.Parse(val.Trim());
+        //}
 
     }
 }

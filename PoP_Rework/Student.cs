@@ -55,22 +55,22 @@ namespace PoP_Rework
         public void AddStudentDetails()
         {
             Console.Write("Student First name: ");
-            FirstName = Services.ValidateString(Console.ReadLine());
+            FirstName = Validations.ValidateString(Console.ReadLine());
 
             Console.Write("Student Last name: ");
-            LastName = Services.ValidateString(Console.ReadLine());
+            LastName = Validations.ValidateString(Console.ReadLine());
 
             Console.Write("Student Age: ");
-            Age = Services.ValidateInt(Console.ReadLine());
+            Age = Validations.ValidateInt(Console.ReadLine());
 
             Console.Write("Student number: ");
-            StudentNumber = Services.ValidateString(Console.ReadLine());
+            StudentNumber = Validations.ValidateString(Console.ReadLine());
 
         }
         public void AddStudentScore()
         {
             Console.Write("Number of student scores: ");
-            int scoreNumber = Services.ValidateInt(Console.ReadLine());
+            int scoreNumber = Validations.ValidateInt(Console.ReadLine());
             Scores = new int[scoreNumber];
             for (int i = 0; i < scoreNumber; i++)
             {
