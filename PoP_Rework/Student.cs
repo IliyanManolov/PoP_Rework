@@ -64,7 +64,7 @@ namespace PoP_Rework
             Age = Validations.ValidateInt(Console.ReadLine());
 
             Console.Write("Student number: ");
-            StudentNumber = Validations.ValidateString(Console.ReadLine());
+            StudentNumber = Validations.ValidateStringWithDigits(Console.ReadLine());
 
         }
         public void AddStudentScore()
