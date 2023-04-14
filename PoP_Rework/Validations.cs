@@ -38,56 +38,69 @@ namespace PoP_Rework
         }
         static public string ValidateString(string str) //only letters
         {
-            while (string.IsNullOrWhiteSpace(str) || ContainsOnlyLetters(str) == false)
+            bool isValid = false;
+            while (!isValid)
             {
+                isValid = true;
                 if (string.IsNullOrWhiteSpace(str))
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
                     str = Console.ReadLine();
+                    isValid = false;
                 }
-                if (ContainsOnlyLetters(str) == false)
+                else if (ContainsOnlyLetters(str) == false)
                 {
                     Console.Write("Input data cannot contain digits! Enter new data: ");
                     str = Console.ReadLine();
+                    isValid = false;
                 }
             }
             return str.Trim();
         }
         static public string ValidateStringWithDigits(string str) //letters + digits
         {
-            while (string.IsNullOrWhiteSpace(str) || ContainsLettersAndDigits(str) == false)
+            bool isValid = false;
+            while (!isValid)
             {
+                isValid = true;
                 if (string.IsNullOrWhiteSpace(str))
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
                     str = Console.ReadLine();
+                    isValid = false;
                 }
-                if (ContainsLettersAndDigits(str) == false)
+                else if (ContainsLettersAndDigits(str) == false)
                 {
                     Console.Write("Input data cannot have forbidden symbols! Enter new data: ");
                     str = Console.ReadLine();
+                    isValid = false;
                 }
             }
             return str.Trim();
         }
         static public int ValidateInt(string val) //only digits
         {
-            while (string.IsNullOrWhiteSpace(val) || ContainsOnlyDigits(val) == false || int.Parse(val) <= 0)
+            bool isValid = false;
+            while (!isValid)
             {
-                while (string.IsNullOrWhiteSpace(val) == true)
+                isValid = true;
+                if (string.IsNullOrWhiteSpace(val))
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
                     val = Console.ReadLine();
+                    isValid = false;
                 }
-                while (ContainsOnlyDigits(val) == false)
+                else if (ContainsOnlyDigits(val) == false)
                 {
                     Console.Write("Input data must be a number! Input new data: ");
                     val = Console.ReadLine();
+                    isValid = false;
                 }
-                while (int.Parse(val.Trim()) <= 0)
+                else if (int.TryParse(val.Trim(), out _) && int.Parse(val.Trim()) <= 0)
                 {
                     Console.Write("Input data cannot be negative or a 0! Enter new data: ");
                     val = Console.ReadLine();
+                    isValid = false;
                 }
             }
             return int.Parse(val.Trim());

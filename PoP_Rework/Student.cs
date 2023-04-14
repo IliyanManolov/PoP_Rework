@@ -112,25 +112,29 @@ namespace PoP_Rework
                 i++;
             }
         }
-        public int ValidateScore(string score) 
+        public int ValidateScore(string score)
         {
-            //TODO: add TryParse to avoid exceptions
-            while (string.IsNullOrWhiteSpace(score) == true || Validations.ContainsOnlyDigits(score) == false ||int.Parse(score) < 0)
+            bool isValid = false;
+            while (!isValid)
             {
-                if(string.IsNullOrWhiteSpace(score) == true)
+                isValid = true;
+                if (string.IsNullOrWhiteSpace(score))
                 {
                     Console.Write("Input data cannot be empty! Input new data: ");
                     score = Console.ReadLine();
+                    isValid = false;
                 }
-                if (Validations.ContainsOnlyDigits(score) == false)
+                else if (Validations.ContainsOnlyDigits(score) == false)
                 {
                     Console.Write("Input data must be a number! Input new data: ");
                     score = Console.ReadLine();
+                    isValid = false;
                 }
-                else if(int.Parse(score) < 0)
+                else if (int.Parse(score) < 0) 
                 {
                     Console.Write("Input data cannot be negative! Input new data: ");
                     score = Console.ReadLine();
+                    isValid = false;
                 }
             }
             return int.Parse(score.Trim());

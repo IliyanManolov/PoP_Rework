@@ -35,7 +35,7 @@ namespace PoP_Rework
             Console.Write("Last name of the student: ");
             string lastName = Validations.ValidateString(Console.ReadLine());
 
-            string fullName = firstName.Trim().Replace(" ", string.Empty) + " " + lastName.Trim().Replace(" ", string.Empty);
+            string fullName = firstName.Replace(" ", string.Empty) + " " + lastName.Replace(" ", string.Empty);
 
             Console.Clear();
             DisplayStudent(fullName);
