@@ -139,7 +139,7 @@ namespace PoP_Rework
             }
             return int.Parse(score.Trim());
         }
-        public void AddToList(Student newstudent)
+        static public void AddToList(Student newstudent)
         {
             studentlist.Add(newstudent);
         }

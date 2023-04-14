@@ -24,7 +24,7 @@ namespace PoP_Rework
             address.AddAddress();
             student.SetAddress(address);
             SaveToFile(student, address, FileName);
-            student.AddToList(student);
+            Student.AddToList(student);
         }
         static public void FindStudent()
         {
@@ -35,7 +35,8 @@ namespace PoP_Rework
             Console.Write("Last name of the student: ");
             string lastName = Validations.ValidateString(Console.ReadLine());
 
-            string fullName = firstName.Replace(" ", string.Empty) + " " + lastName.Replace(" ", string.Empty);
+            //string fullName = firstName.Replace(" ", string.Empty) + " " + lastName.Replace(" ", string.Empty);
+            string fullName = firstName + " " + lastName;
 
             Console.Clear();
             DisplayStudent(fullName);

@@ -39,8 +39,10 @@ namespace PoP_Rework
         static public string ValidateString(string str) //only letters
         {
             bool isValid = false;
+
             while (!isValid)
             {
+                str = String.Concat(str.Where(c => !Char.IsWhiteSpace(c)));
                 isValid = true;
                 if (string.IsNullOrWhiteSpace(str))
                 {
@@ -55,13 +57,14 @@ namespace PoP_Rework
                     isValid = false;
                 }
             }
-            return str.Trim();
+            return str;
         }
         static public string ValidateStringWithDigits(string str) //letters + digits
         {
             bool isValid = false;
             while (!isValid)
             {
+                str = String.Concat(str.Where(c => !Char.IsWhiteSpace(c)));
                 isValid = true;
                 if (string.IsNullOrWhiteSpace(str))
                 {
@@ -76,13 +79,14 @@ namespace PoP_Rework
                     isValid = false;
                 }
             }
-            return str.Trim();
+            return str;
         }
         static public int ValidateInt(string val) //only digits
         {
             bool isValid = false;
             while (!isValid)
             {
+                val = String.Concat(val.Where(c => !Char.IsWhiteSpace(c)));
                 isValid = true;
                 if (string.IsNullOrWhiteSpace(val))
                 {
