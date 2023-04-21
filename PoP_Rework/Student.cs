@@ -38,20 +38,10 @@ namespace PoP_Rework
                     + "\nStudent " + FullName + " student number is " + StudentNumber
                     + "\nStudent " + FullName + " average score is " + AverageScore
                     + "\nStudent " + FullName + " lives in " + Address.City + ", " + Address.Country
-                    + "\nStudent " + FullName + " full address is " + Address
+                    + "\nStudent " + FullName + " full address is " + Address.ExactAddress + " " + Address.Street + ", " + Address.City + ", " + Address.Country
                     + "\nStudent " + FullName + $" has {Scores.Length} scores";
         }        
-        public string DisplayScore(Student student)
-        {
-            string result = string.Empty;
 
-            result = student.Scores[0].ToString();
-            for (int i = 1; i < student.Scores.Length; i++)
-            {
-                result = result + "," + student.Scores[i];
-            }
-            return result;
-        }
         public void AddStudentDetails()
         {
             Console.Write("Student First name: ");
@@ -89,18 +79,6 @@ namespace PoP_Rework
         public void SetAddress(Address newAddress)
         {
             Address = newAddress;
-        }
-        public string ScoreToFile()
-        {
-            string[] result = new string[Scores.Length];
-            int counter = 0;
-            foreach (int score in Scores)
-            {
-                result[counter] = Scores[counter].ToString();
-                counter++;
-            }
-            string finalresult = string.Join(",", result);
-            return finalresult;
         }
         public void ScoreFromFile(string input)
         {
@@ -143,6 +121,35 @@ namespace PoP_Rework
         {
             studentlist.Add(newstudent);
         }
+        public string ScoreToFileString()
+        {
+            string[] result = new string[Scores.Length];
+            int counter = 0;
+            foreach (int score in Scores)
+            {
+                result[counter] = Scores[counter].ToString();
+                counter++;
+            }
+            string finalresult = string.Join(",", result);
+            return finalresult;
+        }
+        public string ScoreToDisplayString()
+        {
+            string result = string.Empty;
+            result = Scores[0].ToString();
+            if (Scores.Length == 1)
+            {
+                return result;
+            }
+            else
+            {
+                for (int i = 1; i < Scores.Length; i++)
+                {
+                    result += ", " + Scores[i].ToString();
+                }
+            }
+            return result;
+        }       
         static public void AddFromFile()
         {
             using (StreamReader reader = new StreamReader(Services.FileName))
@@ -172,23 +179,6 @@ namespace PoP_Rework
                 }
             }
 
-        }
-        public string DisplayScore()
-        {
-            string result = string.Empty;
-            result = Scores[0].ToString();
-            if (Scores.Length == 1)
-            {
-                return result;
-            }
-            else
-            {
-                for (int i = 1; i < Scores.Length; i++)
-                {
-                    result += ", " + Scores[i].ToString();
-                }
-            }
-            return result;
         }
     }
 }

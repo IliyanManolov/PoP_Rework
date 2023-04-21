@@ -37,12 +37,12 @@ namespace PoP_Rework
                     break;
                 case 2:
                     Services.FindStudent();
-                    Console.WriteLine();
+                    Console.WriteLine("-----------------------------------------------------------");
                     Menu();
                     break;
                 case 3:
                     Services.DisplayAllStudents();
-                    Console.WriteLine();
+                    Console.WriteLine("-----------------------------------------------------------");
                     Menu();
                     break;
                 default:

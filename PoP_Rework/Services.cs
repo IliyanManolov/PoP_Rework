@@ -35,7 +35,6 @@ namespace PoP_Rework
             Console.Write("Last name of the student: ");
             string lastName = Validations.ValidateString(Console.ReadLine());
 
-            //string fullName = firstName.Replace(" ", string.Empty) + " " + lastName.Replace(" ", string.Empty);
             string fullName = firstName + " " + lastName;
 
             Console.Clear();
@@ -48,9 +47,12 @@ namespace PoP_Rework
                 if (Student.studentlist[i].FullName.ToLower() == name.ToLower())
                 {
                     Console.WriteLine(Student.studentlist[i].ToString());
-                    Console.WriteLine($"Student {Student.studentlist[i].FullName}'s scores are: " + Student.studentlist[i].DisplayScore());
+                    Console.WriteLine($"Student {Student.studentlist[i].FullName}'s scores are: " + Student.studentlist[i].ScoreToDisplayString());
+                    return;
                 }
             }
+            Console.WriteLine($"Student {name} not found \n");
+            Program.Menu();
         }
         static public void DisplayAllStudents()
         {
@@ -70,7 +72,7 @@ namespace PoP_Rework
                 writer.WriteLine(student.FirstName + ";" + student.LastName + ";" + student.StudentNumber + ";" + student.Age 
                                 + ";" + student.AverageScore 
                                 + ";" + address.ExactAddress + ";" + address.Street + ";" + address.City + ";" + address.Country + ";"
-                                + student.ScoreToFile());
+                                + student.ScoreToFileString());
             }
         }
 

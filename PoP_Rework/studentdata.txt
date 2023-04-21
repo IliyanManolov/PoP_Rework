@@ -1,3 +1,5 @@
 Ivan;Ivanov;1;15;11;5;Roza street;Varna;Bulgaria;10,11,12
 Petar;Petrov;2;17;4,5;25;Roza street;Varna;Bulgaria;7,5,3,3
 John;Smith;5;15;3,5;9;Trakija boulevard;Varna;Bulgaria;4,2,3,5
+John;Doe;22;18;5,33333333333333;12;Downing street;London;UK;10,1,5
+Jane;Doe;20;15;3;22;White Lillies street;Varna;Bulgaria;5,4,3,2,1
