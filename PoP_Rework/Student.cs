@@ -150,7 +150,7 @@ namespace PoP_Rework
             }
             return result;
         }       
-        static public void AddFromFile()
+        static public void LoadFromFile()
         {
             using (StreamReader reader = new StreamReader(Services.FileName))
             {

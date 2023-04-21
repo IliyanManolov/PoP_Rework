@@ -17,7 +17,6 @@ namespace PoP_Rework
             }
             return true;
         }
-
         static public bool ContainsOnlyDigits(string input)
         {
             foreach (char c in input.Trim())
@@ -31,7 +30,7 @@ namespace PoP_Rework
         {
             foreach (char c in input.Trim())
             {
-                if (Char.IsLetterOrDigit(c) == false)
+                if (Char.IsLetterOrDigit(c) == false && !char.IsWhiteSpace(c))
                     return false;
             }
             return true;

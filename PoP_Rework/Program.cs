@@ -11,8 +11,8 @@ namespace PoP_Rework
     {
         static void Main(string[] args)
         {
-            Student.AddFromFile();
-            Menu(); //add stuff into a list upon intialization, try not to constantly read files
+            Student.LoadFromFile();
+            Menu();
             // submition: github repo(MAKE PUBLIC) or files
         }
 
