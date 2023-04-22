@@ -28,7 +28,7 @@ namespace PoP_Rework
         }
         static public void FindStudent()
         {
-            Console.Clear();
+            Console.WriteLine("-----------------------------------------------------------");
 
             Console.Write("First name of the student: ");
             string firstName = Validations.ValidateString(Console.ReadLine());
@@ -47,7 +47,6 @@ namespace PoP_Rework
                 if (Student.studentlist[i].FullName.ToLower() == name.ToLower())
                 {
                     Console.WriteLine(Student.studentlist[i].ToString());
-                    Console.WriteLine($"Student {Student.studentlist[i].FullName}'s scores are: " + Student.studentlist[i].ScoreToDisplayString());
                     return;
                 }
             }

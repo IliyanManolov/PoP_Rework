@@ -39,7 +39,8 @@ namespace PoP_Rework
                     + "\nStudent " + FullName + " average score is " + AverageScore
                     + "\nStudent " + FullName + " lives in " + Address.City + ", " + Address.Country
                     + "\nStudent " + FullName + " full address is " + Address.ExactAddress + " " + Address.Street + ", " + Address.City + ", " + Address.Country
-                    + "\nStudent " + FullName + $" has {Scores.Length} scores";
+                    + "\nStudent " + FullName + $" has {Scores.Length} scores" 
+                    + "\nStudent " + FullName + $" scores are: " + this.ScoreToDisplayString();
         }        
 
         public void AddStudentDetails()

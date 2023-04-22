@@ -35,13 +35,13 @@ namespace PoP_Rework
             }
             return true;
         }
-        static public string ValidateString(string str) //only letters
+        static public string ValidateString(string str)
         {
             bool isValid = false;
-
             while (!isValid)
             {
                 isValid = true;
+
                 if (string.IsNullOrWhiteSpace(str))
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
@@ -50,19 +50,20 @@ namespace PoP_Rework
                 }
                 else if (ContainsOnlyLetters(str) == false)
                 {
-                    Console.Write("Input data cannot contain digits! Enter new data: ");
+                    Console.Write("Input data cannot contain digits or forbidden symbols! Enter new data: ");
                     str = Console.ReadLine();
                     isValid = false;
                 }
             }
             return str.Trim();
         }
-        static public string ValidateStringWithDigits(string str) //letters + digits
+        static public string ValidateStringWithDigits(string str)
         {
             bool isValid = false;
             while (!isValid)
             {
                 isValid = true;
+
                 if (string.IsNullOrWhiteSpace(str))
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");
@@ -71,20 +72,21 @@ namespace PoP_Rework
                 }
                 else if (ContainsLettersAndDigits(str) == false)
                 {
-                    Console.Write("Input data cannot have forbidden symbols! Enter new data: ");
+                    Console.Write("Input data cannot contain forbidden symbols! Enter new data: ");
                     str = Console.ReadLine();
                     isValid = false;
                 }
             }
             return str.Trim();
         }
-        static public int ValidateInt(string val) //only digits
+        static public int ValidateInt(string val)
         {
             bool isValid = false;
             while (!isValid)
             {
                 val = String.Concat(val.Where(c => !Char.IsWhiteSpace(c)));
                 isValid = true;
+
                 if (string.IsNullOrWhiteSpace(val))
                 {
                     Console.Write("Input data cannot be empty! Enter new data: ");

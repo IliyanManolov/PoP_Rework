@@ -13,7 +13,6 @@ namespace PoP_Rework
         {
             Student.LoadFromFile();
             Menu();
-            // submition: github repo(MAKE PUBLIC) or files
         }
 
         static public void Menu()
